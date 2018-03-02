@@ -10,7 +10,10 @@ import com.sunsine.fastdfs.FastDFSTemplateFactory;
 
 import java.io.IOException;
 /**
- * 链接创建
+ * @ClassName: ConnectionFactory
+ * @Description: 链接创建
+ * @author: liutao
+ * @date: 2018年3月2日 下午1:52:53
  */
 class ConnectionFactory extends BasePooledObjectFactory<StorageClient> {
 	private FastDFSTemplateFactory factory;

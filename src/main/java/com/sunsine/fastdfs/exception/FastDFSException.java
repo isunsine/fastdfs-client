@@ -1,14 +1,19 @@
 package com.sunsine.fastdfs.exception;
 
 /**
- * FastDFS Exception
- *
- * @author KisChang
- * @version 1.0
+ * 
+ * @ClassName: FastDFSException   
+ * @Description: FastDFS Exception
+ * @author: liutao
+ * @date: 2018年3月2日 下午1:52:15
  */
 public class FastDFSException extends Exception {
 
-    private int errorCode = 0;
+    /**  
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)  
+	 */
+	private static final long serialVersionUID = 1L;
+	private int errorCode = 0;
 
     public FastDFSException(int errorCode) {
         this.errorCode = errorCode;
