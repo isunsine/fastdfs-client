@@ -3,8 +3,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -53,9 +56,34 @@ public class MainTest {
 				e.printStackTrace();
 			}
 		};
+		Callable<FastDfsInfo> callable = () -> {
+			File file = new File("F:\\01-个人\\图片\\0.jpg");
+			try(FileInputStream fis = new FileInputStream(file);) {
+				
+				byte[] b = new byte[fis.available()];
+				fis.read(b);
+				Map<String, String> map = new HashMap<>();
+				FastDfsInfo rv = dfsTemplate.upload(b, "jpg", map);
+				return rv;
+//				System.out.println(rv.getFileAbsolutePath());
+				// dfsTemplate.deleteFile(rv);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		};
 		for (int i = 0; i < 1; i++) {
 			cachedThreadPool.submit(runnable);
+			Future<?> future = cachedThreadPool.submit(runnable);
+			FastDfsInfo rv = null;
+			try {
+				rv = (FastDfsInfo)future.get();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+			System.out.println(rv.getFileAbsolutePath());
 		}
+		
 		try {
 			cachedThreadPool.shutdown();
 			// (所有的任务都结束的时候，返回TRUE)
