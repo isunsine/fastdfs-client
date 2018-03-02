@@ -16,9 +16,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sunsine.fastdfs.exception.FastDFSException;
 /**
- * 连接池测试
- * @author KisChang
- * @version 1.0
+ * 
+ * @ClassName: MainTest   
+ * @Description: 连接池测试
+ * @author: liutao
+ * @date: 2018年3月2日 下午2:02:50
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-fastdfs.xml")
