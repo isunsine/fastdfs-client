@@ -9,7 +9,7 @@ import com.sunsine.fastdfs.FastDFSTemplateFactory;
 public class ConnectionPoolFactory {
 	private GenericObjectPool<StorageClient> pool;
 	public ConnectionPoolFactory(FastDFSTemplateFactory fastDFSTemplateFactory) {
-		pool = new GenericObjectPool<>(new ConnectionFactory(fastDFSTemplateFactory));
+		pool = new GenericObjectPool<StorageClient>(new ConnectionFactory(fastDFSTemplateFactory));
 	}
 	public StorageClient getClient()
 		throws Exception {
@@ -21,11 +21,11 @@ public class ConnectionPoolFactory {
 		} catch (Exception ignored) {
 		}
 	}
-	private void toConfig(PoolConfig poolConfig) {
-		pool.setMaxTotal(poolConfig.maxTotal);
-		pool.setMaxIdle(poolConfig.maxIdle);
-		pool.setMinIdle(poolConfig.minIdle);
-		pool.setTestOnBorrow(poolConfig.testOnBorrow);
-		pool.setMaxWaitMillis(poolConfig.maxWait);
-	}
+//	private void toConfig(PoolConfig poolConfig) {
+//		pool.setMaxTotal(poolConfig.maxTotal);
+//		pool.setMaxIdle(poolConfig.maxIdle);
+//		pool.setMinIdle(poolConfig.minIdle);
+//		pool.setTestOnBorrow(poolConfig.testOnBorrow);
+//		pool.setMaxWaitMillis(poolConfig.maxWait);
+//	}
 }
