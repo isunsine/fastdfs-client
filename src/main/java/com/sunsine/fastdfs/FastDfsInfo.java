@@ -1,4 +1,7 @@
 package com.sunsine.fastdfs;
+
+import java.io.File;
+
 /**
  * FastDFS 文件描述
  */
@@ -10,13 +13,27 @@ public class FastDfsInfo implements java.io.Serializable {
 	private String group;
 	private String path;
 	private String fileAbsolutePath;
+	private String fileRelativePath;
 	public FastDfsInfo(String group, String path) {
 		this.group = group;
 		this.path = path;
 	}
 	@Override
 	public String toString() {
-		return "FastDfsInfo{" + "group='" + group + '\'' + ", path='" + path + '\'' + '}';
+		return "FastDfsInfo{"
+			+ "group='"
+			+ group
+			+ '\''
+			+ ", path='"
+			+ path
+			+ '\''
+			+ ", fileAbsolutePath='"
+			+ fileAbsolutePath
+			+ '\''
+			+ ", fileRelativePath='"
+			+ fileRelativePath
+			+ '\''
+			+ '}';
 	}
 	public String getGroup() {
 		return group;
@@ -35,5 +52,11 @@ public class FastDfsInfo implements java.io.Serializable {
 	}
 	public void setFileAbsolutePath(String fileAbsolutePath) {
 		this.fileAbsolutePath = fileAbsolutePath;
+	}
+	public String getFileRelativePath() {
+		return group + File.separator + path;
+	}
+	public void setFileRelativePath(String fileRelativePath) {
+		this.fileRelativePath = fileRelativePath;
 	}
 }

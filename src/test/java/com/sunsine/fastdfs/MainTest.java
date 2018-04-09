@@ -81,7 +81,9 @@ public class MainTest {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
-			System.out.println(rv.getFileAbsolutePath());
+			if (rv != null) {
+				System.out.println(rv.getFileAbsolutePath());
+			}
 		}
 		
 		try {
