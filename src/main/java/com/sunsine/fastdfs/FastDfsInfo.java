@@ -1,7 +1,5 @@
 package com.sunsine.fastdfs;
 
-import java.io.File;
-
 /**
  * FastDFS 文件描述
  */
@@ -54,7 +52,7 @@ public class FastDfsInfo implements java.io.Serializable {
 		this.fileAbsolutePath = fileAbsolutePath;
 	}
 	public String getFileRelativePath() {
-		return group + File.separator + path;
+		return group + "/" + path;
 	}
 	public void setFileRelativePath(String fileRelativePath) {
 		this.fileRelativePath = fileRelativePath;
